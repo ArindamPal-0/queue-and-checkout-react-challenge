@@ -53,13 +53,13 @@ function App() {
     }
 
     return (
-        <section>
+        <section className="flex h-screen flex-col justify-start">
             <header>
                 <h1 className="border-b-2 border-b-blue-300 p-4 text-center text-3xl font-bold text-blue-600 underline">
                     Checkout Queue
                 </h1>
             </header>
-            <main className="mt-5 flex flex-col items-center justify-start gap-2">
+            <main className="mt-5 flex flex-grow flex-col items-center justify-start gap-2">
                 <form
                     className="flex h-24 items-center gap-4"
                     onSubmit={onCheckout}
@@ -88,7 +88,7 @@ function App() {
                         Reset
                     </button>
                 </section>
-                <section className="flex flex-col gap-1">
+                <section className="flex flex-col gap-1 py-5">
                     <h2 className="text-xl font-semibold text-blue-600 underline">
                         Queue:
                     </h2>
