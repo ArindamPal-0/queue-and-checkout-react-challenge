@@ -1,20 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Queue from "./components/Queue";
 
 function App() {
     const [input, setInput] = useState<number>(0);
-    const [queues, setQueues] = useState<number[][]>([
-        [],
-        [5],
-        [2, 4],
-        [],
-        [1],
-    ]);
+    const [queues, setQueues] = useState<number[][]>([]);
+
+    useEffect(() => {
+        initializeQueues();
+
+        return () => {
+            setQueues([]);
+        };
+    }, []);
+
+    function initializeQueues() {
+        setQueues([[], [5], [2, 4], [], [1]]);
+    }
 
     function onCheckout(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         console.log(`value: ${input}`);
+
+        if (input <= 0) {
+            console.error("atleast one item should be there for checkout.");
+            return;
+        }
+
+        // select appropriate queue and add new Customer
+        const newQueues = [...queues.map((queue) => [...queue])];
+        let prevItemCount = Infinity,
+            indexMinItems = 3;
+        for (let i = 0; i < newQueues.length; i++) {
+            const itemCount = newQueues[i].reduce(
+                (prevValue, curValue) => prevValue + curValue,
+                0
+            );
+
+            if (prevItemCount > itemCount) {
+                prevItemCount = itemCount;
+                indexMinItems = i;
+            }
+
+            // console.log(`${i} ${prevItemCount} ${indexMinItems}`);
+        }
+
+        newQueues[indexMinItems].push(input);
+
+        setQueues(newQueues);
+
         setInput(0);
     }
 
@@ -46,6 +80,14 @@ function App() {
                         checkout
                     </button>
                 </form>
+                <section className="flex w-full items-center justify-center gap-3 border-b border-t border-b-blue-200 border-t-blue-200 p-5">
+                    <button
+                        className="rounded bg-red-600 px-3 py-1 text-xl text-white hover:bg-red-500"
+                        onClick={() => initializeQueues()}
+                    >
+                        Reset
+                    </button>
+                </section>
                 <section className="flex flex-col gap-1">
                     <h2 className="text-xl font-semibold text-blue-600 underline">
                         Queue:

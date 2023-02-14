@@ -9,12 +9,12 @@ function Queue({ queue, qIndex }: Props) {
             <div className="flex h-16 w-16 items-center justify-center rounded bg-blue-600 text-xl font-bold text-white">
                 {qIndex}
             </div>
-            {queue.map((person, index) => (
+            {queue.map((customer, index) => (
                 <div
                     className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 font-semibold text-white"
                     key={index}
                 >
-                    {person}
+                    {customer}
                 </div>
             ))}
         </div>
