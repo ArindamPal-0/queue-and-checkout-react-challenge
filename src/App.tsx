@@ -74,12 +74,6 @@ function App() {
         };
     }, [state]);
 
-    // on Timer Change
-    useEffect(() => {
-        console.log(`timer: ${timer}`);
-        // do simulation stuffs
-    }, [timer]);
-
     // on Component Mount
     useEffect(() => {
         // initialize state to "stopped"
@@ -136,6 +130,48 @@ function App() {
 
         setInput(0);
     }
+
+    // simulate to run each second
+    function simulationStep() {
+        if (state === "running") {
+            const tempQueues = [...queues.map((queue) => [...queue])];
+
+            // iterate through all the queues
+            // and remove 1 item from the queue front customer
+            for (let i = 0; i < tempQueues.length; i++) {
+                const queue = tempQueues[i];
+                if (queue.length > 0) {
+                    queue[0] = queue[0] - 1;
+
+                    // if all items from customer checks out
+                    // then remove the customer from queue
+                    if (queue[0] === 0) {
+                        queue.shift();
+                    }
+                }
+            }
+
+            // update the queues
+            setQueues(tempQueues);
+
+            // calculate total number of items left
+            const totalItemsCount = tempQueues
+                .map((queue) => queue.length)
+                .reduce((prevValue, curValue) => prevValue + curValue, 0);
+
+            // if all queues are empty then stop the simulation
+            if (totalItemsCount === 0) {
+                stateDispatch({ next: "stopped" });
+            }
+        }
+    }
+
+    // on Timer Change
+    useEffect(() => {
+        // console.log(`timer: ${timer}`);
+        simulationStep();
+        // do simulation stuffs
+    }, [timer]);
 
     return (
         <section className="flex h-screen flex-col justify-start">
