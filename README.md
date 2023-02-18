@@ -1,6 +1,12 @@
-# Queue and Checkout
+<h1 align="center">Queue and Checkout</h1>
 
-## React Challenge
+<div align="center">
+    <a href="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge/actions">
+    <img src="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge/workflows/deploy/badge.svg" alt="Deploy status badge">
+  </a>
+</div>
+
+<h2 align="center">React Challenge</h2>
 
 This repo is my implementation of the challenge solved by the following Youtuber.
 
