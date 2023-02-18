@@ -63,14 +63,13 @@ function App() {
             if (state === "running") {
                 setTimer((value) => value + 1);
             }
-            // console.log(`${id}: running`);
         }, 1000);
-        console.log(`setInterval setup with id: ${id}.`);
+        // console.log(`setInterval setup with id: ${id}.`);
 
         return () => {
             // clear setInterval on Component unmount
             clearInterval(id);
-            console.log(`setInterval with id: ${id} cleared.`);
+            // console.log(`setInterval with id: ${id} cleared.`);
         };
     }, [state]);
 
@@ -99,7 +98,7 @@ function App() {
     function onCheckout(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        console.log(`value: ${input}`);
+        // console.log(`value: ${input}`);
 
         if (input <= 0) {
             console.error("atleast one item should be there for checkout.");
@@ -120,8 +119,6 @@ function App() {
                 prevItemCount = itemCount;
                 indexMinItems = i;
             }
-
-            // console.log(`${i} ${prevItemCount} ${indexMinItems}`);
         }
 
         newQueues[indexMinItems].push(input);
@@ -170,7 +167,6 @@ function App() {
     useEffect(() => {
         // console.log(`timer: ${timer}`);
         simulationStep();
-        // do simulation stuffs
     }, [timer]);
 
     return (
