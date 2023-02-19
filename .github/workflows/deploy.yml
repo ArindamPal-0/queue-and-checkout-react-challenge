@@ -13,7 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.25.0
       - name: setup node version
         uses: actions/setup-node@v3
         with:
@@ -22,16 +25,16 @@ jobs:
 
       - name: Install and build
         run: |
-          pnpm install
-          pnpm build -- --base=/${{github.event.repository.name}}/
+          npm install
+          npm run build -- --base=/${{github.event.repository.name}}/
 
       - name: Deploy to gh pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
 
-      # - name: Publish deployed code
-      #   uses: actions/upload-aritifact@v3
-      #   with:
-      #     name: published
-      #     path: dist
+      - name: Upload build files as artifacts
+        uses: actions/upload-aritifact@v3
+        with:
+          name: published
+          path: dist
