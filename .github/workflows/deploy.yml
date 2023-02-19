@@ -34,7 +34,7 @@ jobs:
           folder: dist
 
       - name: Upload build files as artifacts
-        uses: actions/upload-aritifact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: published
           path: dist
