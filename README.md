@@ -14,6 +14,10 @@ This repo is my implementation of the challenge solved by the following Youtuber
 
 [This react interview challenge was awesome to solve](https://www.youtube.com/watch?v=B9fmr1TpKHE)
 
+## Deployed Site
+
+[https://arindampal-0.github.io/queue-and-checkout-react-challenge/](https://arindampal-0.github.io/queue-and-checkout-react-challenge/)
+
 ## Setup
 
 ```powershell
