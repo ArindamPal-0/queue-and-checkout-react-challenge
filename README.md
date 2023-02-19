@@ -1,8 +1,8 @@
 <h1 align="center">Queue and Checkout</h1>
 
 <div align="center">
-    <a href="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge/actions">
-    <img src="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge/workflows/deploy/badge.svg" alt="Deploy status badge">
+    <a href="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge/actions/workflows/deploy.yml">
+    <img src="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge/actions/workflows/deploy.yml/badge.svg" alt="Build and deploy to github pages">
   </a>
 </div>
 
