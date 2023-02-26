@@ -92,6 +92,7 @@ function App() {
     }, []);
 
     function initializeQueues() {
+        stateDispatch({ next: "stopped" });
         setQueues([[], [5], [2, 4], [], [1]]);
     }
 
@@ -246,6 +247,17 @@ function App() {
                     </div>
                 </section>
             </main>
+            <footer className="flex w-full flex-col items-center justify-center gap-2 border-t border-t-blue-300 py-2">
+                <a
+                    className="text-lg text-blue-600 underline hover:text-blue-400"
+                    href="https://github.com/ArindamPal-0/queue-and-checkout-react-challenge"
+                >
+                    Github
+                </a>
+                <small>
+                    &copy; Copyright {new Date().getFullYear()}, Arindam Pal
+                </small>
+            </footer>
         </section>
     );
 }
